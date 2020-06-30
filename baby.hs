@@ -58,3 +58,9 @@ a `myCompare` b
     | a == b = EQ
     | a <= b = LT
     | otherwise = GT
+
+greet :: String -> String
+greet "Juan" = niceGreeting ++ " Fernando!"
+greet name = badGreeting ++ " " ++ name
+    where niceGreeting = "Hello! So very nice to see you,"
+          badGreeting = "Oh! Pfft. It's you."
