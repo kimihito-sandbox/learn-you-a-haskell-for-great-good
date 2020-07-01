@@ -74,8 +74,7 @@ initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
           (l:_) = lastname
 
 calcBmis :: [(Double, Double)] -> [Double]
-calcBmis xs = [bmi w h | (w, h) <- xs]
-    where bmi weight height = weight / height ^ 2
+calcBmis xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2]
 
 cylinder :: Double -> Double -> Double
 cylinder r h =
