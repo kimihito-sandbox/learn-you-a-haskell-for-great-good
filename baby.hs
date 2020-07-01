@@ -44,9 +44,7 @@ bmiTell weight height
     | bmi <= fat = "You're fat! Lose some weight, fatty!"
     | otherwise = "You're a whale, conguratulations!"
     where bmi = weight / height ^ 2
-          skinny = 18.5
-          normal = 25.0
-          fat = 30.0
+          (skinny, normal, fat) = (18.5, 25.0, 30.0)
 
 max' :: (Ord a) => a -> a -> a
 max' a b
@@ -69,3 +67,8 @@ greet :: String -> String
 greet "Juan" = niceGreeting ++ " Juan!"
 greet "Fernando" = niceGreeting ++ " Fernando!"
 greet name = badGreeting ++ " " ++ name
+
+initials :: String -> String -> String
+initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
+    where (f:_) = firstname
+          (l:_) = lastname
