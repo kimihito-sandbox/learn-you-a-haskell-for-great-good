@@ -87,3 +87,8 @@ describeList ls = "The list is "
                   ++ case ls of [] -> "emtpy."
                                 [x] -> "a signleton list."
                                 xs -> "a longer list."
+
+maximum' :: (Ord a) => [a] -> a
+maximum' [] = error "maximum of emtpy list!"
+maximum' [x] = x
+maximum' (x:xs) = max x (maximum' xs)
