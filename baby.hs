@@ -23,8 +23,8 @@ circumference' r = 2 * pi * r
 
 
 head' :: [a] -> a
-head' [] = error "Can't call head on an empty list, dummy!"
-head' (x:_) = x
+head' xs = case xs of [] -> error "No head for empty lists!"
+                      (x:_) -> x
 
 tell :: (Show a) => [a] -> String
 tell [] = "The list is empty"
