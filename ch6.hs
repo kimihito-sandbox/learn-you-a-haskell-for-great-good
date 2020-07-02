@@ -15,3 +15,7 @@ encode offset msg = map (\c -> chr $ ord c + offset) msg
 
 decode :: Int -> String -> String
 decode shift msg  = encode (negate  shift) msg
+
+digitSum :: Int -> Int
+digitSum = sum . map digitToInt . show
+
