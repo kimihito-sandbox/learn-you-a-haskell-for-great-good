@@ -129,3 +129,8 @@ quicksort (x:xs) =
     let smallerOrEqual = [ a | a <-xs, a <= x]
         larger = [ a | a <- xs, a > x]
     in quicksort smallerOrEqual ++ [x] ++ quicksort larger
+
+multThree :: Int -> Int -> Int -> Int
+multThree x y z = x * y * z
+
+multTwoWithNine = multThree 9
