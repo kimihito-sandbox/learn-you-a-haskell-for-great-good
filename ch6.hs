@@ -1,5 +1,6 @@
 import Data.List
 import Data.Char
+import qualified Data.Map as Map
 
 numUniques :: (Eq a) => [a] -> Int
 numUniques = length . nub
@@ -25,7 +26,9 @@ firstTo40 = find (\x -> digitSum x == 40) [1..]
 firstTo :: Int -> Maybe Int
 firstTo n = find (\x -> digitSum x == n) [1..]
 
+phoneBook :: Map.Map String String
 phoneBook = 
+    Map.fromList $ 
     [("betty", "555-2938")
     , ("bonnie", "452-2928")
     , ("patsy", "493-2928")
