@@ -45,3 +45,5 @@ lockers = Map.fromList
     ,(101, (Free, "JAH3I"))
     ,(103, (Free, "IQSA9"))
     ]
+
+data List a = Empty | Cons a (List a) deriving (Show, Read, Eq, Ord)
