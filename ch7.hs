@@ -1,3 +1,5 @@
+import qualified Data.Map as Map
+
 data Person = Person { firstName :: String
                        , lastName :: String 
                        , age :: Int
@@ -23,3 +25,23 @@ dotProd :: (Num a) => Vector a -> Vector a -> a
 
 vmult :: (Num a) => Vector a -> a -> Vector a
 (Vector i j k) `vmult` m = Vector (i*m) (j*m) (k*m)
+
+data LockerState = Taken | Free deriving (Show, Eq)
+
+type Code = String
+
+type LockerMap = Map.Map Int (LockerState, Code)
+
+lockerLookup :: Int -> LockerMap -> Either String Code
+lockerLookup lockerNumber map = case Map.lookup lockerNumber map of
+    Nothing -> Left $ "Locker " ++ show lockerNumber
+                        ++ "doesn't exist!"
+    Just (state, code) -> if state /= Taken
+                            then Right code
+                            else Left $ "Locker " ++ show lockerNumber ++ " is already taken!"
+lockers :: LockerMap
+lockers = Map.fromList
+    [(100, (Taken, "ZD39I"))
+    ,(101, (Free, "JAH3I"))
+    ,(103, (Free, "IQSA9"))
+    ]
