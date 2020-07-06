@@ -54,3 +54,13 @@ Empty ^++ ys = ys
 (x :-: xs) ^++ ys = x :-: (xs ^++ ys)
 
 data Tree a = EmtpyTree | Node a (Tree a) (Tree a) deriving(Show)
+
+singleton :: a -> Tree a
+singleton x = Node x EmtpyTree EmtpyTree
+
+treeInsert :: (Ord a) => a -> Tree a -> Tree a
+treeInsert x EmtpyTree = singleton x
+treeInsert x (Node a left right)
+    | x == a = Node x left right
+    | x < a = Node a (treeInsert x left) right
+    | x > a = Node a left (treeInsert x right)
